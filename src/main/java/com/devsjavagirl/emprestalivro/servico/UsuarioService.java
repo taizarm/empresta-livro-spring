@@ -15,4 +15,11 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
+    /**
+     * Regra sem sentido, apenas para facilitar implementacao
+     */
+    public boolean isValidUser(Usuario usuario) {
+        return usuario.getCodigo() % 2 == 0;
+    }
+
 }
