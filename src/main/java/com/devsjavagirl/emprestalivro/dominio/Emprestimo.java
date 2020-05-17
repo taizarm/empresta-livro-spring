@@ -17,6 +17,12 @@ public class Emprestimo {
     @ManyToOne
     private Livro livro;
 
+    private EmprestimoStatus status;
+
+    public enum EmprestimoStatus {
+         ATIVO, DEVOLVIDO
+    }
+
     public Long getCodigo() {
         return codigo;
     }
@@ -39,5 +45,13 @@ public class Emprestimo {
 
     public void setLivro(Livro livro) {
         this.livro = livro;
+    }
+
+    public EmprestimoStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(final EmprestimoStatus status) {
+        this.status = status;
     }
 }

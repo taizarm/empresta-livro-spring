@@ -1,5 +1,7 @@
 package com.devsjavagirl.emprestalivro.servico;
 
+import static com.devsjavagirl.emprestalivro.dominio.Emprestimo.EmprestimoStatus.*;
+
 import com.devsjavagirl.emprestalivro.dominio.Emprestimo;
 import com.devsjavagirl.emprestalivro.repositorio.EmprestimoRepository;
 import org.springframework.stereotype.Service;
@@ -18,13 +20,25 @@ public class EmprestimoService {
         this.usuarioService = usuarioService;
     }
 
-    public void save(Emprestimo emprestimo){
+
+//    public void save(Emprestimo emprestimo){
+//        if (!usuarioService.isValidUser(emprestimo.getUsuario())) {
+//            throw new IllegalArgumentException("Usuario invalido");
+//        }
+//
+//        emprestimoRepository.save(emprestimo);
+//    }
+
+    public Emprestimo save(Emprestimo emprestimo){
 
         if (!usuarioService.isValidUser(emprestimo.getUsuario())) {
             throw new IllegalArgumentException("Usuario invalido");
         }
 
+        emprestimo.setStatus(ATIVO);
         emprestimoRepository.save(emprestimo);
+
+        return emprestimo;
     }
 
 }
